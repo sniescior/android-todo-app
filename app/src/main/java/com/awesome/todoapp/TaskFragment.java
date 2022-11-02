@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public class TaskFragment extends Fragment {
 
@@ -24,6 +25,13 @@ public class TaskFragment extends Fragment {
     private Button dateButton;
     private CheckBox taskDoneCheckbox;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        UUID taskId = (UUID) getArguments().getSerializable(ARG_TASK_ID);
+        task = TaskStorage.getInstance().getTask(taskId);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,11 +40,10 @@ public class TaskFragment extends Fragment {
         dateButton =  view.findViewById(R.id.task_date_button);
         taskDoneCheckbox = view.findViewById(R.id.task_done_checkbox);
 
-        Task task = new Task();
-
         dateButton.setText(task.getDate().toString());
         dateButton.setEnabled(false);
 
+        taskNameText.setText(task.getName());
         taskDoneCheckbox.setChecked(task.isDone());
         taskDoneCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             task.setDone(isChecked);
@@ -60,13 +67,6 @@ public class TaskFragment extends Fragment {
         });
 
         return view;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        UUID taskId = (UUID) getArguments().getSerializable(ARG_TASK_ID);
-        task = TaskStorage.getInstance().getTask(taskId);
     }
 
     public static TaskFragment newInstance(UUID taskID){

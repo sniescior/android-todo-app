@@ -15,7 +15,7 @@ public class Task {
     }
 
     public UUID getID() {
-        return id;
+        return this.id;
     }
 
     public void setName(String name) {
@@ -27,11 +27,11 @@ public class Task {
     }
 
     public Date getDate() {
-        return date;
+        return this.date;
     }
 
     public Boolean isDone() {
-        return done;
+        return this.done;
     }
 
     public void setDone(Boolean checked) {

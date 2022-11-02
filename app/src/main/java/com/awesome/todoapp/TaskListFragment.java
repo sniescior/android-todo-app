@@ -3,9 +3,11 @@ package com.awesome.todoapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,27 +19,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class TaskListFragment extends Fragment {
-
     public static final String KEY_EXTRA_TASK_ID = "KEY_EXTRA_TASK_ID";
     private RecyclerView recyclerView;
     private TaskAdapter adapter;
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_task_list, container, false);
+        recyclerView = view.findViewById(R.id.task_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateView();
+        return view;
+    }
 
     private class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Task task;
-        private TextView taskItemName;
-        private TextView taskItemDate;
+        private TextView nameTextView;
+        private TextView dateTextView;
 
         public TaskHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_task, parent, false));
+            itemView.setOnClickListener(this);
 
-            taskItemName = itemView.findViewById(R.id.task_item_name);
-            taskItemDate = itemView.findViewById(R.id.task_item_date);
+            nameTextView = itemView.findViewById(R.id.task_item_name);
+            dateTextView = itemView.findViewById(R.id.task_item_date);
         }
-
         public void bind(Task task){
             this.task = task;
-            taskItemName.setText(task.getName());
-            taskItemDate.setText(task.getDate().toString());
+            nameTextView.setText(task.getName());
+            dateTextView.setText(task.getDate().toString());
         }
 
         @Override
@@ -48,11 +58,11 @@ public class TaskListFragment extends Fragment {
         }
     }
 
-    private class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
+    private class TaskAdapter extends  RecyclerView.Adapter<TaskHolder>{
         private List<Task> tasks;
 
         public TaskAdapter(List<Task> tasks){
-            this.tasks = tasks;
+            this.tasks =tasks;
         }
 
         @NonNull
@@ -74,16 +84,7 @@ public class TaskListFragment extends Fragment {
         }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_task_list, container, false);
-        recyclerView = view.findViewById(R.id.task_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        updateView();
-        return view;
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     private void updateView(){
         TaskStorage taskStorage = TaskStorage.getInstance();
         List<Task> tasks = taskStorage.getTasks();
@@ -95,9 +96,9 @@ public class TaskListFragment extends Fragment {
             adapter.notifyDataSetChanged();
         }
     }
-
     @Override
     public void onResume() {
+
         super.onResume();
         updateView();
     }

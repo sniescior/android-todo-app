@@ -12,8 +12,12 @@ public class TaskStorage {
     public static  TaskStorage getInstance() { return taskStorage; }
 
     public Task getTask(UUID taskID) {
-        for(Task task: this.tasks) if(task.getID().equals(taskID)) return task;
-        return null;
+        Task taskFound = new Task();
+        for(Task task : tasks){
+            if(task.getID().equals(taskID)) taskFound = task;
+        }
+        System.out.println("Found task: " + taskFound.getName());
+        return taskFound;
     }
 
     public List<Task> getTasks() {
