@@ -1,0 +1,14 @@
+
+t
+java:S1450"YRemove the "dateButton" field and declare it as a local variable in the relevant methods.(ˆŸªùùÿÿÿÿ
+t
+java:S1450"_Remove the "taskDoneCheckbox" field and declare it as a local variable in the relevant methods.(óÙÍ
+
+v
+java:S1450"[Remove the "taskNameText" field and declare it as a local variable in the relevant methods.(ñ—Žáüÿÿÿÿ
+I
+java:S16020",Remove useless curly braces around statement(ÿó¹·8•ëÛÆÃ0
+ž
+java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(á¬‡Ý8–ëÛÆÃ0
+£
+java:S1186@"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×åó«øÿÿÿÿ8–ëÛÆÃ0
