@@ -12,12 +12,12 @@ public class TaskStorage {
     public static  TaskStorage getInstance() { return taskStorage; }
 
     public Task getTask(UUID taskID) {
-        Task taskFound = new Task();
         for(Task task : tasks){
-            if(task.getID().equals(taskID)) taskFound = task;
+            if(task.getID().equals(taskID)) {
+                return task;
+            }
         }
-        System.out.println("Found task: " + taskFound.getName());
-        return taskFound;
+        return null;
     }
 
     public List<Task> getTasks() {
@@ -37,5 +37,9 @@ public class TaskStorage {
             }
             tasks.add(task);
         }
+    }
+
+    public void addTask(Task task){
+        tasks.add(task);
     }
 }

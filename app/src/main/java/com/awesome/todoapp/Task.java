@@ -13,6 +13,8 @@ public class Task {
     public Task() {
         this.id = UUID.randomUUID();
         this.date = new Date();
+        this.category = Category.HOME;
+        this.done = false;
     }
 
     public UUID getID() {
