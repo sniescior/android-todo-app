@@ -8,6 +8,7 @@ public class Task {
     private String name;
     private Date date;
     private Boolean done;
+    private Category category;
 
     public Task() {
         this.id = UUID.randomUUID();
@@ -36,5 +37,17 @@ public class Task {
 
     public void setDone(Boolean checked) {
         this.done = checked;
+    }
+
+    public void setDate(Date time) {
+        this.date = time;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return this.category;
     }
 }
