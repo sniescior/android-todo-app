@@ -1,0 +1,22 @@
+
+t
+java:S1450'"^Remove the "categorySpinner" field and declare it as a local variable in the relevant methods.(É¿«©
+t
+java:S1450""YRemove the "dateButton" field and declare it as a local variable in the relevant methods.(ˆŸªùùÿÿÿÿ
+t
+java:S1450#"_Remove the "taskDoneCheckbox" field and declare it as a local variable in the relevant methods.(óÙÍ
+
+v
+java:S1450!"[Remove the "taskNameText" field and declare it as a local variable in the relevant methods.(ñ—áüÿÿÿÿ
+œ
+java:S1186C"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ñ¢®Êøÿÿÿÿ
+B
+java:S1602N",Remove useless curly braces around statement(ÿó¹·
+œ
+java:S1186T"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŞæÇ¤ÿÿÿÿÿ
+—
+java:S1186Z"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(³Ğ‰
+B
+java:S1602a",Remove useless curly braces around statement(ÿó¹·
+@
+java:S1068%"+Remove this unused "spinner" private field.(Ï‰¯
